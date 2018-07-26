@@ -6,7 +6,6 @@ export default (state = emptyState, { type, payload }) => {
   let updatedExp;
   let updatedState;
 
-  console.log('expense reducer type:', type, 'payload', payload);
   switch (type) {
     case 'CATEGORY_CREATE':
       return { ...state, [payload.id]: [] };

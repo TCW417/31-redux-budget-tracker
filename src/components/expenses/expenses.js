@@ -13,18 +13,18 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const Expenses = (props) => {
-  console.log('Expenses render props', props);
   const {
     expense, 
     key,
+    categoryId,
     expenseRemove,
     expenseUpdate,
   } = props;
   return (
     <div className="expense-item" key={key}>
-      <h2> { expense.desc }: ${ expense.amount } </h2>
-      <button onClick={() => expenseRemove(expense)}> Delete </button>
-      <ExpenseForm expense={expense} onComplete={expenseUpdate}/>
+      <h2> Expense: { expense.desc }: Amount: ${ expense.amount } </h2>
+      <button onClick={() => expenseRemove(expense)}>Delete Expense</button>
+      <ExpenseForm expense={expense} categoryId={categoryId} onComplete={expenseUpdate}/>
     </div>
   );
 };
@@ -32,6 +32,7 @@ const Expenses = (props) => {
 Expenses.propTypes = {
   expense: PropTypes.object,
   key: PropTypes.number,
+  categoryId: PropTypes.string,
   expenseRemove: PropTypes.func,
   expenseUpdate: PropTypes.func,
 };

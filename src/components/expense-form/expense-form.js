@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './expense-form.scss';
 
 const defaultState = {
   desc: '',
@@ -12,7 +13,6 @@ export default class ExpenseForm extends React.Component {
     super(props);
     this.state = props.expense || defaultState;
     this.state.categoryId = props.categoryId;
-    console.log('expense-form constructor state', this.state);
   }
 
   handleChange = (event) => {
@@ -29,13 +29,16 @@ export default class ExpenseForm extends React.Component {
   }
 
   render() {
-    console.log('Expense-form render state', this.state);
     const buttonText = this.props.expense ? 'Update Expense' : 'Create Expense';
+    const descLabelText = this.props.expense ? 'Update Expense Description:' : 'Expense Description:';
+    const amountLabelText = this.props.expense ? 'Update Expense Amount:' : 'Expense Amount:';
+
     return (
+      <fieldset className="expense-form">
       <form
         onSubmit={ this.handleSubmit }
-        className="expense-form"
       >
+        <label htmlFor="desc">{descLabelText}</label>
         <input 
           type="text"
           name="desc"
@@ -43,6 +46,7 @@ export default class ExpenseForm extends React.Component {
           value={this.state.desc}
           onChange={this.handleChange}
         />
+        <label htmlFor="amount">{amountLabelText}</label>
         <input
           type="number"
           name="amount"
@@ -52,6 +56,7 @@ export default class ExpenseForm extends React.Component {
         />
         <button type="submit">{buttonText}</button>
       </form>
+      </fieldset>
     );
   }
 }

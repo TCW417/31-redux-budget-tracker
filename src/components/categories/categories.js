@@ -22,27 +22,30 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-class Category extends React.Component {
-  render() {
-    const {
-      category,
-      expenses, 
-      key,
-      categoryRemove,
-      categoryUpdate,
-      expenseCreate,
-    } = this.props;
-    return (
-      <div className="category-item" key={key}>
-        <h2> { category.name }: ${ category.budget } </h2>
-        <button onClick={() => categoryRemove(category)}> Delete </button>
-        <CategoryForm category={category} onComplete={categoryUpdate}/>
-        <ExpenseForm onComplete={expenseCreate} categoryId={category.id} />
-        { expenses.map(expense => <Expenses expense={expense} key={expense.id} />) }
-      </div>
-    );
-  }
-}
+const Category = (props) => {
+  const {
+    category,
+    expenses, 
+    key,
+    categoryRemove,
+    categoryUpdate,
+    expenseCreate,
+  } = props;
+  const categorySpend = expenses.reduce((acc, curr) => acc + parseInt(curr.amount, 10), 0);
+  const categoryBalance = category.budget - categorySpend;
+  return (
+    <div className="category-item" key={key}>
+      <h2>Category: {category.name}</h2>
+      <h4>Budget ${category.budget}, 
+        Expenses: ${categorySpend}, Balance: ${categoryBalance}</h4>
+      <button onClick={() => categoryRemove(category)}> Delete Category </button>
+      <CategoryForm category={category} onComplete={categoryUpdate}/>
+      <ExpenseForm onComplete={expenseCreate} categoryId={category.id} />
+      { expenses.map(expense => <Expenses 
+        expense={expense} key={expense.id} categoryId={category.id}/>) }
+    </div>
+  );
+};
 
 Category.propTypes = {
   category: PropTypes.object,

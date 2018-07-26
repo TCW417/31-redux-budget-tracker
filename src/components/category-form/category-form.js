@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './category-form.scss';
 
 const defaultState = {
   name: '',
@@ -25,13 +26,12 @@ export default class CategoryForm extends React.Component {
     }
   }
 
+
   render() {
-    const buttonText = this.props.category ? 'Update' : 'Create';
-    return (
-      <form
-        onSubmit={ this.handleSubmit }
-        className="category-form"
-      >
+    const buttonText = this.props.category ? 'Update' : 'Create New Category';
+    const createCatName = this.props.category ? null
+      : <div>
+        <label htmlFor="name">Budget category:</label>
         <input 
           type="text"
           name="name"
@@ -39,6 +39,14 @@ export default class CategoryForm extends React.Component {
           value={this.state.name}
           onChange={this.handleChange}
         />
+      </div>;
+    return (
+      <fieldset className="category-form">
+      <form
+        onSubmit={ this.handleSubmit }
+      >
+        {createCatName}
+        <label htmlFor="budget">{this.props.category ? 'Update budgeted amount:' : 'Budgeted Amount:'}</label>
         <input
           type="number"
           name="budget"
@@ -48,6 +56,7 @@ export default class CategoryForm extends React.Component {
         />
         <button type="submit">{buttonText}</button>
       </form>
+      </fieldset>
     );
   }
 }
