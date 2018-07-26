@@ -17,7 +17,7 @@ webpackConfig.output = {
 
 webpackConfig.plugins = [
   new HtmlWebpackPlugin({
-    title: '401d25 Redux',
+    title: 'Budget Tracker',
   }),
   new DefinePlugin({
     API_URL: JSON.stringify(process.env.API_URL),
