@@ -1,0 +1,17 @@
+@import '../../style/vars';
+
+.expense-form {
+  margin: 10px;
+  margin-left: 40px;
+  padding: 10px;
+  background-color: $color-primary;
+  legend {
+    margin-top: 10px;
+  }
+
+  input {
+    display: inline;
+    margin-right: 20px;
+    clear: right;
+  }
+}
