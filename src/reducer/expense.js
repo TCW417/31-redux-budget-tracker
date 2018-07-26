@@ -1,4 +1,4 @@
-const emptyState = {};
+const emptyState = JSON.parse(localStorage.getItem('expenses')) || {};
 
 export default (state = emptyState, { type, payload }) => {
   let categoryId;
