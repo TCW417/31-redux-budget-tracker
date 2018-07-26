@@ -1,4 +1,5 @@
-
+// copied directly from https://redux.js.org/advanced/middleware
+// examples.
 
 export default store => next => (action) => { // eslint-disable-line
   console.group(action.type);
