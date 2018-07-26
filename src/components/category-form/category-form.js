@@ -41,7 +41,7 @@ export default class CategoryForm extends React.Component {
         />
       </div>;
     return (
-      <fieldset className="category-form">
+      <fieldset className="category-form" data-cy="category-form">
       <form
         onSubmit={ this.handleSubmit }
       >

@@ -1,12 +1,16 @@
 // copied directly from https://redux.js.org/advanced/middleware
 // examples.
 
+import {
+  cl, ci, cg, cge,
+} from '../lib/utils';
+
 // this is intended to be imported as "logger"
 export default store => next => (action) => { // eslint-disable-line
-  console.group(action.type);
-  console.info('dispatching', action);
+  cg(action.type);
+  ci('dispatching', action);
   const result = next(action);
-  console.log('next state', store.getState());
-  console.groupEnd();
+  cl('next state', store.getState());
+  cge();
   return result;
 };

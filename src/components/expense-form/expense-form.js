@@ -34,7 +34,7 @@ export default class ExpenseForm extends React.Component {
     const amountLabelText = this.props.expense ? 'Update Expense Amount:' : 'Expense Amount:';
 
     return (
-      <fieldset className="expense-form">
+      <fieldset className="expense-form" data-cy="expense-form">
       <form
         onSubmit={ this.handleSubmit }
       >

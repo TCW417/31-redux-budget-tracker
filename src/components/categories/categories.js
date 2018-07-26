@@ -34,11 +34,11 @@ const Category = (props) => {
   const categorySpend = expenses.reduce((acc, curr) => acc + parseInt(curr.amount, 10), 0);
   const categoryBalance = category.budget - categorySpend;
   return (
-    <div className="category-item" key={key}>
+    <div className="category-item" data-cy="category-item" key={key}>
       <h2>Category: {category.name}</h2>
       <h4>Budget ${category.budget}, 
         Expenses: ${categorySpend}, Balance: ${categoryBalance}</h4>
-      <button onClick={() => categoryRemove(category)}> Delete Category </button>
+      <button data-cy="category-delete-btn" onClick={() => categoryRemove(category)}> Delete Category </button>
       <CategoryForm category={category} onComplete={categoryUpdate}/>
       <ExpenseForm onComplete={expenseCreate} categoryId={category.id} />
       { expenses.map(expense => <Expenses 

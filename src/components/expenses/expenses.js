@@ -21,9 +21,9 @@ const Expenses = (props) => {
     expenseUpdate,
   } = props;
   return (
-    <div className="expense-item" key={key}>
+    <div className="expense-item" data-cy="expense-item" key={key}>
       <h2> Expense: { expense.desc }: Amount: ${ expense.amount } </h2>
-      <button onClick={() => expenseRemove(expense)}>Delete Expense</button>
+      <button data-cy="expense-delete-btn" onClick={() => expenseRemove(expense)}>Delete Expense</button>
       <ExpenseForm expense={expense} categoryId={categoryId} onComplete={expenseUpdate}/>
     </div>
   );

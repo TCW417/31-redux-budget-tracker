@@ -22,7 +22,7 @@ const Landing = (props) => {
   const { categories, categoryCreate } = props;
   return (
     <div>
-      <div className="create-form">
+      <div className="create-form" data-cy="create-category-form">
         <CategoryForm onComplete={categoryCreate} />
       </div>
       <div className="budget-items">
