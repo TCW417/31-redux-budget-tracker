@@ -18,7 +18,7 @@ const update = category => ({
 });
 
 const remove = category => ({
-  type: 'CATEGORY_DESTROY',
+  type: 'CATEGORY_REMOVE',
   payload: category,
 });
 
